@@ -6,7 +6,7 @@ from pprint import pprint
 
 
 router = DefaultRouter()
-router.register('products', views.ProductViewSet)
+router.register('products', views.ProductViewSet, basename='products')
 router.register('collections', views.CollectionViewSet)
 urlpatterns = router.urls
 products_router = routers.NestedDefaultRouter(

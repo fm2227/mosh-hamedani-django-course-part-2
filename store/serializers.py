@@ -55,6 +55,9 @@ class CartItemSerializer(serializers.ModelSerializer):
         cart_id = self.context['cart_id']
         return CartItem.objects.create(cart_id=cart_id, **validated_data)
 
+    def update(self, instance, validated_data):
+        return super().update(instance, validated_data)
+
 
 class CartSerializer(serializers.ModelSerializer):
     id = serializers.UUIDField(read_only=True)
@@ -96,3 +99,9 @@ class AddCartItemSerializer(serializers.ModelSerializer):
     class Meta:
         model = CartItem
         fields = ['id', 'product_id', 'quantity']
+
+
+class UpdateCartItemSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = CartItem
+        fields = ['quantity']
